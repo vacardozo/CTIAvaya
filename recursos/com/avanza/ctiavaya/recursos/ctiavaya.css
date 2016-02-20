@@ -1,0 +1,7 @@
+.inicio-sesion {
+    -fx-background-color: #085B91;
+}
+
+.toolbox Label > .glyph-icon {
+    -fx-fill: white;
+}

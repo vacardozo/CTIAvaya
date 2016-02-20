@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="">
+    <Properties>
+        <Property name="nombreArchivo">../logs/cti_avaya.log</Property>
+        <Property name="formatoNombreArchivo">../logs/cti_avaya_%d{dd-MM-yyyy}.log</Property>
+        <Property name="formatoLog">%d{dd-MM-yyyy HH:mm:ss,SSS} [%t] %-5p %c - %m%n</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="archivo" fileName="${nombreArchivo}"
+                 filePattern="${formatoNombreArchivo}">
+            <PatternLayout>
+                <Pattern>${formatoLog}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+        <Console name="consola" target="SYSTEM_OUT">
+            <PatternLayout pattern="${formatoLog}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="archivo" level="all"/>
+            <AppenderRef ref="consola" level="all"/>
+        </Root>
+    </Loggers>
+</Configuration>
